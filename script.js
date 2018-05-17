@@ -2,15 +2,12 @@ function enterSymbol(symbol) {
   expression = expression.toString();
   const isOperator = /[\/\*\+\-\.]/g;
   const lastSymbol = expression.substr(-1, 1);
-  const lastAllowedDecimal = expression.substr(-6, 1);
   if (symbol.match(isOperator) && lastSymbol.match(isOperator)) return;
 
   if (expression === '0' && !symbol.match(isOperator)) {
     uploadDisplay(symbol);
     return;
   }
-
-  if (lastAllowedDecimal === '.' && !symbol.match(isOperator)) return;
 
   uploadDisplay(expression + symbol.toString());
 }
