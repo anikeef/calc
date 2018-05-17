@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+}
+
+.calc {
+  width: 265px;
+  margin: 100px auto;
+  background-color: rgb(153,153,153);
+  box-shadow: 0 0 40px rgb(153,153,153);
+  border: 1px solid rgb(153,153,153);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.display {
+  height: 90px;
+  color: white;
+  text-align: right;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 15px 10px 15px;
+  font-weight: 300;
+}
+
+p {
+    font-size: 40px;
+    white-space: nowrap;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-around;
+}
+
+button {
+  border: none;
+  border-bottom: 1px solid rgb(153,153,153);
+  width: 65px;
+  height: 55px;
+  background-color: rgb(224,224,224)
+}
+
+button:active {
+  background-color: rgb(178,178,178);
+}
+
+.operator:active {
+  background-color: rgb(194,115,47);
+}
+
+.operator {
+  background-color: rgb(245,146, 62);
+  color: white;
+}
+
+[data-char='0'],
+[data-char='.'],
+#equal {
+  border-bottom: none;
+}
+
+[data-char='0'] {
+  width: 131px;
+}
+
+@keyframes decrease {
+  from { transform: scale(1); }
+  to { transform: scale(0); }
+}
+
+.disappear {
+  animation: decrease 3s forwards;
+}
