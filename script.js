@@ -29,6 +29,39 @@ function resizeText() {
   }
 }
 
+function showResult() {
+  const answer = Math.round(eval(expression) * 100000) / 100000;
+  if (answer === Infinity || isNaN(answer)) {
+    uploadDisplay('Good Bye!');
+    calc.classList.add('disappear');
+    return;
+  }
+  uploadDisplay(answer.toString());
+}
+
+function deleteLast() {
+  if (expression.toString().length === 1) {
+    uploadDisplay('0');
+    return;
+  }
+
+  uploadDisplay(expression.slice(0, -1));
+}
+
+function negate() {
+  if (expression.substr(0, 1) == '-') {
+    uploadDisplay(expression.substr(1))
+    return;
+  }
+
+  uploadDisplay('-' + expression);
+}
+
+function clearScreen() {
+  uploadDisplay('0');
+  displayText.style.fontSize = '40px';
+}
+
 const calc = document.querySelector('.calc')
 const displayText = document.querySelector('p');
 const inputButtons = Array.from(document.querySelectorAll('button:not(.special)'));
@@ -36,7 +69,7 @@ const inputButtons = Array.from(document.querySelectorAll('button:not(.special)'
 const equal = document.querySelector("#equal");
 const clear = document.querySelector("#clear");
 const backspace = document.querySelector("#backspace");
-const negate = document.querySelector("#negate");
+const plusMinus = document.querySelector("#negate");
 
 let expression = '0';
 uploadDisplay(expression);
@@ -47,36 +80,41 @@ inputButtons.forEach(button => {
     enterSymbol(char);
   })
 })
+equal.addEventListener('click', showResult);
+clear.addEventListener('click', clearScreen);
+backspace.addEventListener('click', deleteLast);
+plusMinus.addEventListener('click', negate);
 
-equal.addEventListener('click', function() {
-  const answer = Math.round(eval(expression) * 100000) / 100000;
-  if (answer === Infinity || isNaN(answer)) {
-    uploadDisplay('Good Bye!');
-    calc.classList.add('disappear');
-    return;
-  }
-  uploadDisplay(answer.toString());
-});
+window.addEventListener('keydown', function(e) {
+  const button = document.querySelector(`[data-key="${e.keyCode}"]`);
+  if (!button) return;
 
-clear.addEventListener('click', function() {
-  uploadDisplay('0');
-  displayText.style.fontSize = '40px';
+  button.classList.add('clicked');
+  switch (e.keyCode) {
+    case 13:
+      showResult();
+      return;
+      break;
+    case 8:
+      deleteLast();
+      return;
+      break;
+    case 192:
+      negate();
+      return;
+      break;
+    case 67:
+      clearScreen();
+      return;
+      break;
+  };
+
+  const char = button.getAttribute('data-char');
+  enterSymbol(char);
 })
 
-backspace.addEventListener('click', function() {
-  if (expression.toString().length === 1) {
-    uploadDisplay('0');
-    return;
-  }
-
-  uploadDisplay(expression.slice(0, -1));
-})
-
-negate.addEventListener('click', function() {
-  if (expression.substr(0, 1) == '-') {
-    uploadDisplay(expression.substr(1))
-    return;
-  }
-
-  uploadDisplay('-' + expression);
+window.addEventListener('keyup', function(e) {
+  const button = document.querySelector(`[data-key="${e.keyCode}"]`);
+  if (!button) return;
+  button.classList.remove('clicked');
 })

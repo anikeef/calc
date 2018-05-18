@@ -47,11 +47,13 @@ button {
   background-color: rgb(224,224,224)
 }
 
-button:active {
+button:active,
+button.clicked {
   background-color: rgb(178,178,178);
 }
 
-.operator:active {
+.operator:active,
+.operator.clicked {
   background-color: rgb(194,115,47);
 }
 
