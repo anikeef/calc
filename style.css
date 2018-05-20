@@ -105,10 +105,23 @@ h1 {
   font-size: 20px;
   font-weight: 400;
   padding: 5px 0;
+  border-bottom: 1px dotted rgb(153,153,153);
 }
 
 .history p:first-child {
   padding-top: 0;
+}
+
+.clearHistory {
+  padding: 0 5px;
+  width: auto;
+  height: 28px;
+  float: right;
+  color: #777;
+  background-color: transparent;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
 }
 
 @keyframes decrease {
