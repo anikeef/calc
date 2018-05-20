@@ -26,10 +26,11 @@ function uploadHistory(expression, answer) {
 }
 
 function resizeText() {
+  const calcWidth = parseInt(getComputedStyle(calc).width) - 30;
   let width = parseInt(getComputedStyle(displayText).width);
   let fontSize = parseInt(getComputedStyle(displayText).fontSize);
 
-  while (width > 233) {
+  while (width > calcWidth) {
     displayText.style.fontSize = fontSize - 1 + 'px';
     width = parseInt(getComputedStyle(displayText).width);
     fontSize = parseInt(getComputedStyle(displayText).fontSize);
