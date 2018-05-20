@@ -3,17 +3,25 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .calc {
-  width: 265px;
-  margin: 100px auto;
+  flex-basis: 500px;
+  margin: 20px 20px 0;
   background-color: rgb(153,153,153);
-  box-shadow: 0 0 40px rgb(153,153,153);
+  box-shadow: 0 0 20px rgb(153,153,153);
   border: 1px solid rgb(153,153,153);
   border-radius: 5px;
   overflow: hidden;
+  height: 440px;
 }
 
 .display {
@@ -25,6 +33,7 @@
   justify-content: flex-end;
   padding: 0 15px 10px 15px;
   font-weight: 300;
+  background: linear-gradient(#777, #555);
 }
 
 p {
@@ -42,9 +51,16 @@ p {
 button {
   border: none;
   border-bottom: 1px solid rgb(153,153,153);
-  width: 65px;
-  height: 55px;
-  background-color: rgb(224,224,224)
+  border-right: 1px solid rgb(153,153,153);
+  width: 25%;
+  height: 70px;
+  background-color: rgb(224,224,224);
+}
+
+.operator {
+  background-color: rgb(245,146, 62);
+  color: white;
+  border-right: none;
 }
 
 button:active,
@@ -57,11 +73,6 @@ button.clicked {
   background-color: rgb(194,115,47);
 }
 
-.operator {
-  background-color: rgb(245,146, 62);
-  color: white;
-}
-
 [data-char='0'],
 [data-char='.'],
 #equal {
@@ -69,7 +80,35 @@ button.clicked {
 }
 
 [data-char='0'] {
-  width: 131px;
+  width: 50%;
+}
+
+.history {
+  background: linear-gradient(#eee, #ccc);
+  margin: 20px;
+  box-shadow: 0 0 20px rgb(153,153,153);
+  border-radius: 5px;
+  flex-basis: 500px;
+  padding: 20px;
+  color: #555;
+  height: 440px;
+  overflow: auto;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.history p {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 5px 0;
+}
+
+.history p:first-child {
+  padding-top: 0;
 }
 
 @keyframes decrease {

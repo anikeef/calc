@@ -33,10 +33,19 @@ function showResult() {
   const answer = Math.round(eval(expression) * 100000) / 100000;
   if (answer === Infinity || isNaN(answer)) {
     uploadDisplay('Good Bye!');
-    calc.classList.add('disappear');
+    wrap.classList.add('disappear');
     return;
   }
+  uploadHistory(expression, answer);
   uploadDisplay(answer.toString());
+}
+
+function uploadHistory(expression, answer) {
+  const history = document.querySelector('.history');
+  const block = document.createElement('p');
+  if (expression == answer) return;
+  block.textContent = expression + '=' + answer;
+  history.appendChild(block);
 }
 
 function deleteLast() {
@@ -62,7 +71,8 @@ function clearScreen() {
   displayText.style.fontSize = '40px';
 }
 
-const calc = document.querySelector('.calc')
+const wrap = document.querySelector('.wrap');
+const calc = document.querySelector('.calc');
 const displayText = document.querySelector('p');
 const inputButtons = Array.from(document.querySelectorAll('button:not(.special)'));
 
