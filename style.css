@@ -13,15 +13,18 @@
   justify-content: center;
 }
 
-.calc {
+.wrap > div {
   flex-basis: 500px;
-  margin: 20px 20px 0;
-  background-color: rgb(153,153,153);
-  box-shadow: 0 0 20px rgb(153,153,153);
-  border: 1px solid rgb(153,153,153);
-  border-radius: 5px;
-  overflow: hidden;
   height: 440px;
+  border-radius: 10px;
+}
+
+.calc {
+  margin: 10px 10px 0;
+  background-color: rgb(153,153,153);
+  box-shadow: rgba(0,0,0,.8) 0px 3px 8px -3px;
+  border: 1px solid rgb(153,153,153);
+  overflow: hidden;
 }
 
 .display {
@@ -85,13 +88,12 @@ button.clicked {
 
 .history {
   background: linear-gradient(#eee, #ccc);
-  margin: 20px;
-  box-shadow: 0 0 20px rgb(153,153,153);
-  border-radius: 5px;
-  flex-basis: 500px;
+  margin: 10px;
+  box-shadow:inset rgba(0, 0, 0, 0.1) 0px -3px 8px 0px,
+            inset rgba(252,255,255,.2) 0px 3px 8px,
+            rgba(0,0,0,.8) 0px 3px 8px -3px;
   padding: 20px;
   color: #555;
-  height: 440px;
   overflow: auto;
 }
 
@@ -102,7 +104,7 @@ h1 {
 }
 
 .history p {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   padding: 5px 0;
   border-bottom: 1px dotted rgb(153,153,153);
